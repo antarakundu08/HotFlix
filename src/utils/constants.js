@@ -11,4 +11,9 @@ export const API_OPTIONS = {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZGJlYjU0NTUwYzY2YmQxN2M0ZmY5OWNkYjJhYzIxMiIsInN1YiI6IjY2MmUxNTdhZjZmZDE4MDEyMjIyYzdmYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RDoncc1kgXx67fe0R1FTPD0XF9TyCaMinIbvMo7jJUg'
     }
   };
-export const MOVIE_API_URL = "https://api.themoviedb.org/3/movie/now_playing?page=1";
+export const MOVIE_API_URL = 
+    "https://api.themoviedb.org/3/movie/now_playing?page=1";
+export const PLAY_ICON = 
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU8sayn7Smd2HprQmuRE1e9HhRYeKapowbYw&s"
+export const INFO_ICON = 
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSqOVe61oTdSJLq1jPUT7-dDOpE_VH5zdcSg&s"

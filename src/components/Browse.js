@@ -1,17 +1,19 @@
 import React from 'react'
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
 import Header from './Header'
+import MainComponent from './MainComponent';
+import SecondaryComponent from './SecondaryComponent';
 
 const Browse = () => {
 
   useNowPlayingMovies();
-  
+
+
   return (
     <div>
       <Header />
-      <div className='absolute'>
-            <h1 className='font-extrabold'>BROWSE MEEE!!!!</h1>
-        </div>
+      <MainComponent/>
+      <SecondaryComponent />
     </div>
   )
 }

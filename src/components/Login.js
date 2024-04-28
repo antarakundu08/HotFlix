@@ -5,15 +5,14 @@ import { formValidation } from '../utils/validation'
 import { useRef } from 'react'
 import { auth } from '../utils/firebase'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { addUser } from '../utils/userSlice'
+import { BG_IMG, PHOTO_UTL } from '../utils/constants'
 
 const Login = () => {
 
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [erroMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const email = useRef(null);
@@ -38,12 +37,13 @@ const Login = () => {
         password.current.value)
       .then((userCredential) => {
         // Signed up 
-        const user = userCredential.user;
+        const user = userCredential?.user;
         updateProfile(user, {
           displayName: name.current.value, 
-          photoURL: "https://avatars.githubusercontent.com/u/61645954?v=4"
+          photoURL: PHOTO_UTL,
         }).then(() => {
-          const {uid, email, displayName, photoURL} = auth.currentUser;
+          const {uid, email, displayName, photoURL} = auth?.currentUser;
+          console.log(uid, email, displayName, photoURL)
               dispatch(
                 addUser({
                   uid: uid, 
@@ -51,12 +51,12 @@ const Login = () => {
                   displayName: displayName, 
                   photoURL: photoURL,
                 })
-              );
-              navigate("/browse")
+              )
           // Profile updated!
           // ...
         }).catch((error) => {
           setErrorMessage(error.message)
+          console.log(111,error.message);
           // An error occurred
           // ...
         });
@@ -66,6 +66,7 @@ const Login = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         setErrorMessage(errorCode+ ": "+errorMessage);
+        console.log(222,error.message);
         // ..
       });
     } else {
@@ -88,13 +89,13 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-        navigate("/browse")
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         setErrorMessage(errorCode+ ": "+errorMessage);
+        console.log(333,error.message);
       });
     }
 
@@ -104,7 +105,7 @@ const Login = () => {
     <div>
         <Header />
         <div className='absolute'>
-            <img src="https://assets.nflxext.com/ffe/siteui/vlv3/9f46b569-aff7-4975-9b8e-3212e4637f16/453ba2a1-6138-4e3c-9a06-b66f9a2832e4/IN-en-20240415-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+            <img src= {BG_IMG}
             alt='logo' />
         </div>
         <form onSubmit={(e) => e.preventDefault()} className='bg-black p-12 max-w-sm mx-auto relative top-24 bg-opacity-80 z-10'>
@@ -140,4 +141,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Login;

@@ -21,11 +21,11 @@ const VideoList = ({title, API_URL}) => {
 */
 
   return (
-    <div className=''>
-      <h3 className='font-bold text-white'>{title}</h3>
+    <div className='px-6'>
+      <h3 className="text-lg font-extrabold md:text-2xl py-4 text-white">{title}</h3>
       <div className='mr-2 flex overflow-x-auto no-scrollbar mb-8'>
         {movieList && movieList.map((movie) => 
-        <img className='w-36 m-2'
+       movie.poster_path && <img className='w-36 m-2'
         key={movie.id}
         src={CDN_URL + movie.poster_path}
         alt="PosterImage"

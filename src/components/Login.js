@@ -43,7 +43,6 @@ const Login = () => {
           photoURL: PHOTO_UTL,
         }).then(() => {
           const {uid, email, displayName, photoURL} = auth?.currentUser;
-          console.log(uid, email, displayName, photoURL)
               dispatch(
                 addUser({
                   uid: uid, 
@@ -56,7 +55,6 @@ const Login = () => {
           // ...
         }).catch((error) => {
           setErrorMessage(error.message)
-          console.log(111,error.message);
           // An error occurred
           // ...
         });
@@ -66,7 +64,6 @@ const Login = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         setErrorMessage(errorCode+ ": "+errorMessage);
-        console.log(222,error.message);
         // ..
       });
     } else {
@@ -78,9 +75,7 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        console.log(user)
         const {uid, email, displayName, photoURL} = userCredential.user;
-        console.log(uid, email, displayName, photoURL)
               dispatch(
                 addUser({
                   uid: uid, 
@@ -95,7 +90,6 @@ const Login = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         setErrorMessage(errorCode+ ": "+errorMessage);
-        console.log(333,error.message);
       });
     }
 
@@ -104,11 +98,13 @@ const Login = () => {
   return (
     <div>
         <Header />
-        <div className='absolute'>
+        <div className="absolute">
             <img src= {BG_IMG}
-            alt='logo' />
+            alt='logo'
+            className="h-screen object-cover md:object-none md:h-max" />
         </div>
-        <form onSubmit={(e) => e.preventDefault()} className='bg-black p-12 max-w-sm mx-auto relative top-24 bg-opacity-80 z-10'>
+        <form onSubmit={(e) => e.preventDefault()} 
+        className="w-full md:w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80">
             <div className='px-3 mx-3 text-white font-bold text-2xl'>{isLoggedIn? "Sign Up" : "Sign In"}</div>
             {isLoggedIn && 
             <input 
@@ -141,4 +137,4 @@ const Login = () => {
   )
 }
 
-export default Login;
+export default Login

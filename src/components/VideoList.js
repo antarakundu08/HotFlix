@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { API_OPTIONS } from '../utils/constants'
 import { CDN_URL } from '../utils/constants'
+import MovieDetails from './MovieDetails'
+import MoviePoster from './MoviePoster'
 
 const VideoList = ({title, API_URL}) => {
 
@@ -25,11 +28,14 @@ const VideoList = ({title, API_URL}) => {
       <h3 className="text-lg font-extrabold md:text-2xl py-4 text-white">{title}</h3>
       <div className='mr-2 flex overflow-x-auto no-scrollbar mb-8'>
         {movieList && movieList.map((movie) => 
-       movie.poster_path && <img className='w-36 m-2'
-        key={movie.id}
-        src={CDN_URL + movie.poster_path}
-        alt="PosterImage"
-        />
+          <Link 
+            to={"/movie/"+movie.id} 
+            key={movie.id} 
+            state={{data: movie}}
+            style={{display: 'contents'}}
+            > 
+           <MoviePoster poster_path={movie.poster_path} />
+          </Link>
         )}
       </div>
     </div>

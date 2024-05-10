@@ -13,7 +13,6 @@ const GPTSearchBar = () => {
   const dispatch = useDispatch()
   const [errorMsg, setErrorMsg] = useState(null);
 
-  console.log(gptkey)
 
   const openai = new OpenAI({
       apiKey: gptkey,
@@ -39,12 +38,10 @@ const GPTSearchBar = () => {
       messages: [{ role: "user", content: gptQuery }],
       model: "gpt-3.5-turbo",
   });
-  console.log(gptResults)
   if (!gptResults.choices) {
     // TODO: Write Error Handling
   }
 
-  console.log(gptResults.choices?.[0]?.message?.content);
 
   // Andaz Apna Apna, Hera Pheri, Chupke Chupke, Jaane Bhi Do Yaaro, Padosan
   const gptMovies = gptResults.choices?.[0]?.message?.content.split(",");
@@ -60,7 +57,6 @@ const GPTSearchBar = () => {
 
   const tmdbResults = await Promise.all(promiseArray);
 
-  console.log(tmdbResults);
 
   dispatch(
     addGptMovieResult({movieNames: gptMovies})
@@ -68,7 +64,7 @@ const GPTSearchBar = () => {
   }
 
   handleGPTSearch().catch((e) => {
-    if(e.message.includes('401') && !e.message.includes('Incorrect API key provided') ){
+    if(e.message.includes('401') && e.message.includes('Incorrect API key provided') ){
     setErrorMsg(null);
   } else{
     setErrorMsg(e.message);
@@ -94,9 +90,9 @@ const GPTSearchBar = () => {
       </div>
       <div  className="md:flex md:justify-center">
       {errorMsg && <p className='text-red-800 bg-black border-2 opacity-80 border-red-800 rounded-lg m-2 font-bold text-center md:w-1/2'>{errorMsg+"!"}</p>}
-      {!gptkey && <p className='text-red-800 bg-black border-2 opacity-80 border-red-800 rounded-lg m-2 font-bold text-center px-2'>Please add your GPT/ OpenAI Key above!</p>}
+      {!gptkey && <p className='text-red-800 bg-black border-2 opacity-80 border-red-800 rounded-lg m-2 font-bold text-center px-2'>Please add your correct GPT/ OpenAI Key above!</p>}
       </div>
-    
+           
 
     </div>
   )

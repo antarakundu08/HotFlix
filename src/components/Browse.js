@@ -10,7 +10,6 @@ const Browse = () => {
 
   useNowPlayingMovies();
   const gptToggle = useSelector(store => store?.gpt?.showGptSearch);
-  console.log(gptToggle);
 
   return (
     <div>

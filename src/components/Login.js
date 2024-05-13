@@ -43,6 +43,7 @@ const Login = () => {
           photoURL: PHOTO_UTL,
         }).then(() => {
           const {uid, email, displayName, photoURL} = auth?.currentUser;
+          console.log(uid, email, displayName, photoURL);
               dispatch(
                 addUser({
                   uid: uid, 

@@ -67,6 +67,7 @@ const Login = () => {
         // ..
       });
     } else {
+      console.log(email, password)
       signInWithEmailAndPassword(
         auth, 
         email.current.value, 

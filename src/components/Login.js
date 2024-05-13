@@ -67,7 +67,6 @@ const Login = () => {
         // ..
       });
     } else {
-      console.log(email, password)
       signInWithEmailAndPassword(
         auth, 
         email.current.value, 
@@ -76,15 +75,6 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        const {uid, email, displayName, photoURL} = userCredential.user;
-              dispatch(
-                addUser({
-                  uid: uid, 
-                  email: email, 
-                  displayName: displayName, 
-                  photoURL: photoURL,
-                })
-              );
         // ...
       })
       .catch((error) => {

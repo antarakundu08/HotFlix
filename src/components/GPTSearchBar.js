@@ -79,10 +79,10 @@ const GPTSearchBar = () => {
             <input 
               ref={gptMessage}
               type='text' 
-              placeholder='So, what you wanna watch today?' 
-              className="p-4 m-4 col-span-9"/>
+              placeholder="What's your mood? 😉"
+              className="p-2 md:p-4 m-4 col-span-9"/>
             <button 
-              className="col-span-3 my-4 mx-3 md:m-4 disabled:cursor-no-drop py-2 px-4 font-bold bg-red-800 text-white disabled:bg-red-600 disabled:text-slate-400 rounded-lg"
+              className="col-span-3 my-4 mx-1 md:mx-3 md:m-4 disabled:cursor-no-drop py-2 px-4 font-bold bg-red-800 text-white disabled:bg-red-600 disabled:text-slate-400 rounded-lg"
               disabled={gptkey ? false : true}
               onClick={handleGPTSearch}>Search</button>
 

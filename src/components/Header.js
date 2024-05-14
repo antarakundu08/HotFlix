@@ -32,7 +32,7 @@ const Header = () => {
           // User is signed in, see docs for a list of available properties
           // https://firebase.google.com/docs/reference/js/auth.user
           const {uid, email, displayName, photoURL} = user;
-          setUserStore(user);
+          if (user !== null) setUserStore(user);
           dispatch(
             addUser({
               uid: uid, 
@@ -69,7 +69,7 @@ const Header = () => {
          <button
          className='my-4 mx-1 px-2 py-2 bg-red-800 text-white rounded-lg font-semibold'
          onClick={() => {setPopUpToggle(true);
-          console.log(popUpToggle)}}>
+          }}>
          Add Key
        </button>
           }
@@ -81,7 +81,7 @@ const Header = () => {
           </button>
           <div className='flex'>
           <img 
-          className='w-9 h-9 m-4'
+          className='w-9 h-9 m-4 my-auto '
           src={userStore?.photoURL}
           alt='usericon' />
           <button className='font-bold text-white' onClick={handleSignOut}> Sign Out </button>

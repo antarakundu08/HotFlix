@@ -145,10 +145,10 @@ const Login = () => {
                     <span className="cursor-pointer hover:text-gray-50">Need Help?</span>
                 </div>
                 <div className="w-full py-4 px-2 mx-2 font-light text-left text-md">
-                    <span className="text-gray-400">{isLoggedIn ? "Already a member?" : "New to Netflix?" }  </span><span onClick={toggleSignInForm} className="text-white cursor-pointer hover:text-gray-400">{isLoggedIn ? "Sign In" : "Sign Up"} now.</span>
+                    <span className="text-gray-400">{isLoggedIn ? "New to Netflix?" : "Already a member?"}  </span><span onClick={toggleSignInForm} className="text-white cursor-pointer hover:text-gray-400">{isLoggedIn ? "Sign Ip" : "Sign Un"} now.</span>
                 </div>
                 <div className="py-2 px-2 mx-2 text-xs font-light text-gray-400">
-                    <span>This is not the real Netflix. It's a clone developed by Antara Kundu to learn how Netflix frontend works and is intended to show off his development skills.</span>
+                    <span>This is not the real Netflix. It's a clone developed by Antara Kundu to learn how Netflix frontend works and is intended to show off her development skills.</span>
                 </div>
         </form>
     </div>

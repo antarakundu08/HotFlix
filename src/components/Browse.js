@@ -19,7 +19,7 @@ const Browse = () => {
   const movieLoaded = useSelector(store => store?.movie?.nowPlayingMovies);
   const gptToggle = useSelector(store => store?.gpt?.showGptSearch);
 
-  if(gptToggle === undefined || gptToggle === null ) return <Shimmer />;
+  // if(gptToggle === undefined || gptToggle === null ) return <Shimmer />;
 
   return (
     <div>
